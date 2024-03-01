@@ -2,9 +2,16 @@
 
 # Fix the paths if necessary
 HDA="-drive file=arch_aarch64.qcow2,format=qcow2"
-KERNEL=./linux/arch/arm64/boot/Image
+KERNELSRC=../linux/
+KERNEL="${KERNELSRC}/arch/arm64/boot/Image.gz"
 
-CMDLINE='root=/dev/vda2 rw console=ttyAMA0 kgdboc=ttyS0' # kgdbwait'
+# KDB=1
+if [ -z ${KDB} ]; then
+    CMDLINE='root=/dev/vda2 rw console=ttyAMA0 kgdboc=ttyS0'
+else
+    CMDLINE='root=/dev/vda2 rw console=ttyAMA0 kgdboc=ttyS0 kgdbwait'
+fi
+
 
 SHARED="./share"
 VIRTFS+=" --virtfs local,path=${SHARED},mount_tag=share,security_model=passthrough,id=share "

@@ -4,13 +4,12 @@
       "name": "Linux Modules",
       "includePath": [
         "${workspaceFolder}/**",
-        "./linux/include",
-        "./linux/arch/arm64/include",
-        "./linux/arch/arm64/include/generated",
-        "/usr/lib/gcc/aarch64-redhat-linux/13/include"
+        "${workspaceFolder}/../linux/include",
+        "${workspaceFolder}/../linux/arch/arm64/include",
+        "${workspaceFolder}/../linux/arch/arm64/include/generated"
       ],
       "forcedInclude": [
-        "./linux/include/generated/autoconf.h"
+        "${workspaceFolder}/../linux/include/generated/autoconf.h"
       ],
       "defines": [
         "__KERNEL__",
@@ -19,8 +18,8 @@
       ],
       "compilerPath": "/usr/bin/gcc",
       "cStandard": "gnu11",
-      "intelliSenseMode": "linux-gcc-arm64",
-      "dotConfig": "./linux/.config",
+      "intelliSenseMode": "macos-clang-arm64",
+      "dotConfig": "${workspaceFolder}/../linux/.config",
       "browse": {
         "limitSymbolsToIncludedHeaders": true
       }

@@ -11,7 +11,7 @@
         "**/*.mod.c": true,
         "**/*.o": true,
         "**/modules.order": true,
-        "**/*.symvers": true,
+        "**/*.symvers": true
     },
     "[c]": {
         "editor.detectIndentation": false,
@@ -20,11 +20,11 @@
         "editor.rulers": [
             80,
             100
-        ],
+        ]
     },
     "files.associations": {
         "*.h": "c"
     },
     "C_Cpp.errorSquiggles": "enabled",
-    // "C_Cpp.intelliSenseCacheSize": 0,
+    "C_Cpp_Runner.msvcBatchPath": "",
 }

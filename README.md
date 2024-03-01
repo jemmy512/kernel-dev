@@ -1,44 +1,57 @@
-# Kernel Programming Template for VS Code
+# Kernel Programming Template for macOS + arm64 + VS Code
 
-To develop linux kernel and/or modules clone this repository, open it in VS Code
-and follow the setup steps.
+This repository is a template for developing Linux kernel and/or modules on macOS
+running on a Mac with Apple Silicon (arm64) using VS Code.
 
-If you plan to work on **apple silicon mac** (like I do),
-it's worth to check out my full [setup guide](https://mastermakrela.com/kernel),
-because not everything works natively on a mac.
+Each part of this equation is optional, but it's what I used in the
+[tutorial](https://mastermakrela.com/kernel/lkp) for compiling the kernel on macOS.
 
 ## Setup
+
+This repository assumes you have cloned the kernel source (`v6.5.7`)
+into a sibling directory, i.e.:
+
+```bash
+.
+├── kernel-dev
+└── linux
+```
+
+## Quickstart
 
 0. Clone this repository
    `git clone https://github.com/mastermakrela/kernel-dev.git`
 
-1. Open the repository in VS Code
-   `code kernel-dev`
+1. Clone the kernel and compile it
 
-2. Install the recommended extensions
+   - how? [Compiling Linux kernel on macOS](https://mastermakrela.com/kernel/lkp/kernel-dev-on-macos)
 
-   1. [C/C++](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools) from Microsoft
+2. get an image for the VM
 
-      Corresponding config file: [`c_cpp_properties.json`](.vscode/c_cpp_properties.json)
+   - how? [Development VM](https://mastermakrela.com/kernel/lkp/kernel-dev-on-macos#development-vm)
 
-   2. [Clang-Format](https://marketplace.visualstudio.com/items?itemName=xaver.clang-format)
+3. run the VM
+   - `./qemu-run.sh`
+   - questions? [Running the development VM](https://mastermakrela.com/kernel/lkp/kernel-dev-on-macos#running-the-development-vm)
 
-      Corresponding config file: [`.clang-format`](.clang-format)
-      It's a symlink to file that will exist after you get the kernel source.
+## Recommended extensions
 
-   3. [Makefile Tools](https://marketplace.visualstudio.com/items?itemName=ms-vscode.makefile-tools)
+1. [C/C++](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools) from Microsoft
 
-3. Clone the kernel source
+   Corresponding config file: [`c_cpp_properties.json`](.vscode/c_cpp_properties.json)
 
-   1. `git clone https://github.com/torvalds/linux.git --depth=1`
+2. [Clang-Format](https://marketplace.visualstudio.com/items?itemName=xaver.clang-format)
 
-      `--depth=1` is optional, but recommended to save time and space
+   Corresponding config file: [`.clang-format`](.clang-format)
+   It's a symlink to file that will exist after you get the kernel source.
 
-4. Get some image for qemu
+3. [Makefile Tools](https://marketplace.visualstudio.com/items?itemName=ms-vscode.makefile-tools)
 
-   - you can for example extract the `.qcow` from [here](https://mac.getutm.app/gallery/archlinux-arm)
-   - just name it `arch_aarch64.qcow2` or update the name in [qemu-run.sh](qemu-run.sh)
+4. [checkpatch](https://marketplace.visualstudio.com/items?itemName=idanp.checkpatch)
 
+   automatically checks your code for kernel style violations
+
+<!--
 ## Development
 
 First you need a kernel:
@@ -53,4 +66,4 @@ Now you can open the [module](modules/hello_world/hello_world.c) and start devel
 You can build the module with `make`
 and copy it to the VM with `cp *.ko ../../share`.
 
-Test that it works with `insmod hello_world.ko` and `rmmod hello_world.ko` (inside the VM).
+Test that it works with `insmod hello_world.ko` and `rmmod hello_world.ko` (inside the VM). -->
